@@ -1,0 +1,62 @@
+{
+  "name": "gestion",
+  "version": "1.0.0",
+  "description": "Une app mobile de gestion de trésorerie pour une caserne de pompier composé de 3 équipes",
+  "license": "ISC",
+  "author": {
+    "name": "Thaffael"
+  },
+  "type": "module",
+  "main": "./lib/index.js",
+  "scripts": {
+    "dev": "dotenv -e .env.dev -- tsx --watch src/index.ts",
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "prepublish": "npm run build",
+    "generate": "prisma generate",
+    "migrate:dev": "dotenv -e .env.dev -- prisma migrate dev",
+    "db:push": "dotenv -e .env.dev -- prisma db push",
+    "studio": "dotenv -e .env.dev -- prisma studio",
+    "test:ui": "vitest --ui"
+  },
+  "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^8.4.3",
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "@scalar/express-api-reference": "^0.9.4",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "zod": "^4.3.6"
+  },
+  "files": [
+    "./bin/*",
+    "./lib/*"
+  ],
+  "typings": "./lib/index.d.ts",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.5.0",
+    "@types/pg": "^8.18.0",
+    "@vitest/ui": "^4.1.1",
+    "dotenv-cli": "^11.0.0",
+    "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.4.0",
+    "prettier": "^3.8.1",
+    "prisma": "^7.5.0",
+    "tsx": "^4.21.0",
+    "typescript-eslint": "^8.57.1",
+    "vitest": "^4.1.1"
+  }
+}

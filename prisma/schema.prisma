@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+} 
+
+model teams {
+  uuid        String @id @default(uuid())
+  name        String @unique
+  pin_hash    String
+  accounts    accounts[]
+}
+
+model accounts {
+  uuid          String @id @default(uuid())
+  team          teams  @relation(fields: [team_uuid], references: [uuid], onDelete: Cascade)
+  team_uuid     String
+  name          String
+  balance       Float
+  transactions  transactions[]
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAW
+  DEFINE
+}
+
+model transactions {
+  uuid          String   @id @default(uuid())
+  account       accounts @relation(fields: [account_uuid], references: [uuid], onDelete: Cascade)
+  account_uuid  String
+  type          TransactionType
+  amount        Float
+  created_at    DateTime @default(now())
+}
